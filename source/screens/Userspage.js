@@ -16,6 +16,9 @@ export default class Userspage extends Component{
    }
     
     componentDidMount(){
+       if(this.props.navigation.state.params.userdata){
+                 this.setState({userdata:(this.props.navigation.state.params.userdata})
+       }else{
         fetch( 'https://api.github.com/users/url' , {
             method: 'GET',
         }).then((response) => response.json())
@@ -26,6 +29,7 @@ export default class Userspage extends Component{
             .catch((error) => {
                 console.error(error);
             });
+       }
            
     }
 
